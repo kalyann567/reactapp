@@ -1,0 +1,18 @@
+FROM node:alpine
+
+RUN addgroup -S kalyan && adduser -S kalyan -G kalyan
+
+USER kalyan
+
+WORKDIR /home/kalyan/app
+
+# WORKDIR /app
+
+COPY package.json .
+
+RUN npm install
+
+COPY . .
+
+CMD ["npm","start"]
+
